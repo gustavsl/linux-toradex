@@ -123,7 +123,7 @@
 			regulator-name = "usb_host_vbus";
 			regulator-min-microvolt = <5000000>;
 			regulator-max-microvolt = <5000000>;
-			gpio =  <&gpio3 31 0>;
+			gpio =  <&gpio2 19 0>;
 			status = "disabled";
 		};
 	};
@@ -379,6 +379,17 @@
 	status = "disabled";
 };
 
+&i2c4 {
+	clock-frequency = <100000>;
+	pinctrl-names = "default", "recovery";
+	pinctrl-0 = <&pinctrl_i2c4>;
+	pinctrl-1 = <&pinctrl_i2c4_recovery>;
+	scl-gpios = <&gpio1 28 GPIO_ACTIVE_HIGH>;
+	sda-gpios = <&gpio1 29 GPIO_ACTIVE_HIGH>;
+	status = "disabled";
+};
+
+
 /* PAD Ctrl Values for Common Settings */
 #define PAD_CTRL_HYS_PU 0x1b0b0 /*(PAD_CTL_HYS | PAD_CTL_PUS_100K_UP | PAD_CTL_PUE | PAD_CTL_PKE | PAD_CTL_SPEED_MED | PAD_CTL_DSE_40ohm)*/
 #define PAD_CTRL_HYS_PD 0x130b0 /*(PAD_CTL_HYS | PAD_CTL_PUE | PAD_CTL_PKE | PAD_CTL_SPEED_MED | PAD_CTL_DSE_40ohm)*/
@@ -397,15 +408,28 @@
 				MX6QDL_PAD_SD2_CMD__GPIO1_IO11   PAD_CTRL_HYS_PU
 				MX6QDL_PAD_NANDF_CS2__GPIO6_IO15 PAD_CTRL_HYS_PU
 				MX6QDL_PAD_EIM_D18__GPIO3_IO18   PAD_CTRL_HYS_PU
-				MX6QDL_PAD_EIM_A19__GPIO2_IO19   PAD_CTRL_HYS_PU
+				//MX6QDL_PAD_EIM_A19__GPIO2_IO19   PAD_CTRL_HYS_PU /* SODIMM 79 */
 				MX6QDL_PAD_EIM_D29__GPIO3_IO29   PAD_CTRL_HYS_PD
-				MX6QDL_PAD_EIM_A23__GPIO6_IO06   PAD_CTRL_HYS_PU
+				MX6QDL_PAD_EIM_A23__GPIO6_IO06   PAD_CTRL_HYS_PU /* SODIMM 85 */
 				MX6QDL_PAD_EIM_A20__GPIO2_IO18   PAD_CTRL_HYS_PU
 				MX6QDL_PAD_EIM_A17__GPIO2_IO21   PAD_CTRL_HYS_PU
 				MX6QDL_PAD_EIM_A18__GPIO2_IO20   PAD_CTRL_HYS_PU
 				MX6QDL_PAD_EIM_EB3__GPIO2_IO31   PAD_CTRL_HYS_PU
 				MX6QDL_PAD_EIM_D17__GPIO3_IO17   PAD_CTRL_HYS_PU
-				MX6QDL_PAD_SD2_DAT0__GPIO1_IO15  PAD_CTRL_HYS_PU
+				MX6QDL_PAD_SD2_DAT0__GPIO1_IO15	 PAD_CTRL_HYS_PU
+				MX6QDL_PAD_EIM_CS0__GPIO2_IO23	 PAD_CTRL_HYS_PU /* SODIMM 105 */
+				MX6QDL_PAD_SD2_DAT1__GPIO1_IO14  PAD_CTRL_HYS_PU /* SODIMM 106 */
+				MX6QDL_PAD_EIM_CS1__GPIO2_IO24   PAD_CTRL_HYS_PU /* SODIMM 107 */
+				MX6QDL_PAD_EIM_D31__GPIO3_IO31	 PAD_CTRL_HYS_PU /* SODIMM 129 */
+				MX6QDL_PAD_EIM_D30__GPIO3_IO30	 PAD_CTRL_HYS_PU /* SODIMM 131 */
+				MX6QDL_PAD_NANDF_D2__GPIO2_IO02	 PAD_CTRL_HYS_PU /* SODIMM 135 */
+				MX6QDL_PAD_EIM_D23__GPIO3_IO23	 PAD_CTRL_HYS_PU /* SODIMM 31 */
+				MX6QDL_PAD_NANDF_D7__GPIO2_IO07	 PAD_CTRL_HYS_PU /* SODIMM 37 */
+				MX6QDL_PAD_EIM_A16__GPIO2_IO22	 PAD_CTRL_HYS_PU /* SODIMM 45 */
+				MX6QDL_PAD_SD2_CLK__GPIO1_IO10	 PAD_CTRL_HYS_PU /* SODIMM 93 */
+				//MX6QDL_PAD_SD2_DAT3__GPIO1_IO12	 PAD_CTRL_HYS_PU /* SODIMM 99 */
+				MX6QDL_PAD_NANDF_D5__GPIO2_IO05	 PAD_CTRL_HYS_PU /* SODIMM 43 */
+				MX6QDL_PAD_GPIO_17__GPIO7_IO12	 PAD_CTRL_HYS_PU /* SODIMM 137 */
 			>;
 		};
 		pinctrl_csi_gpio_2: csi_gpio-2 {
@@ -444,17 +468,17 @@
 	};
 
 	flexcan1 {
-
+		/* changes made on FlexCAN to get it working */
 		pinctrl_flexcan1: flexcan1grp {
 			fsl,pins = <
-				MX6QDL_PAD_GPIO_7__FLEXCAN1_TX   0x80000000
-				MX6QDL_PAD_GPIO_8__FLEXCAN1_RX   0x80000000
+				MX6QDL_PAD_GPIO_7__FLEXCAN1_TX   PAD_CTRL_HYS_PU
+				MX6QDL_PAD_GPIO_8__FLEXCAN1_RX   PAD_CTRL_HYS_PU
 			>;
 		};
 		pinctrl_flexcan2: flexcan2grp {
 			fsl,pins = <
-				MX6QDL_PAD_KEY_COL4__FLEXCAN2_TX 0x80000000
-				MX6QDL_PAD_KEY_ROW4__FLEXCAN2_RX 0x80000000
+				MX6QDL_PAD_KEY_COL4__FLEXCAN2_TX PAD_CTRL_HYS_PU
+				MX6QDL_PAD_KEY_ROW4__FLEXCAN2_RX PAD_CTRL_HYS_PU
 			>;
 		};
 	};
@@ -474,8 +498,9 @@
 		};
 		pinctrl_gpio_2: gpio-2 {
 			fsl,pins = <
-				MX6QDL_PAD_GPIO_7__GPIO1_IO07       PAD_CTRL_HYS_PU
-				MX6QDL_PAD_GPIO_8__GPIO1_IO08       PAD_CTRL_HYS_PU
+				/* removed these pins since they are being used by CAN interface */
+				//MX6QDL_PAD_GPIO_7__GPIO1_IO07       PAD_CTRL_HYS_PU
+				//MX6QDL_PAD_GPIO_8__GPIO1_IO08       PAD_CTRL_HYS_PU
 			>;
 		};
 	};
@@ -493,10 +518,22 @@
 				MX6QDL_PAD_GPIO_6__I2C3_SDA 0x4001b8b1
 			>;
 		};
+		pinctrl_i2c4: i2c4grp {
+			fsl,pins = <
+				MX6QDL_PAD_NANDF_CS3__I2C4_SDA	0x4001b8b1 /* SODIMM 154 */
+				MX6QDL_PAD_NANDF_WP_B__I2C4_SCL	0x4001b8b1 /* SODIMM 162 */
+			>;
+		};
 		pinctrl_i2c3_recovery: i2c3-recoverygrp {
 			fsl,pins = <
 				MX6QDL_PAD_GPIO_3__GPIO1_IO03 0x4001b8b1
 				MX6QDL_PAD_GPIO_6__GPIO1_IO06 0x4001b8b1
+			>;
+		};
+		pinctrl_i2c4_recovery: i2c4-recoverygrp {
+			fsl,pins = <
+				MX6QDL_PAD_ENET_TXD1__GPIO1_IO29 0x4001b8b1 /* SODIMM 154 */
+				MX6QDL_PAD_NANDF_WP_B__GPIO6_IO09 0x4001b8b1 /* SODIMM 162 */
 			>;
 		};
 	};
@@ -524,7 +561,7 @@
 		};
 		pinctrl_gpio_keys: gpio_keys {
 			fsl,pins = <
-				MX6QDL_PAD_EIM_A16__GPIO2_IO22		PAD_CTRL_HYS_PD	/* Power Button */
+				//MX6QDL_PAD_EIM_A16__GPIO2_IO22		PAD_CTRL_HYS_PD	/* Power Button */ /*SODIMM 45 */
 			>;
 		};
 		pinctrl_i2c2: i2c2grp {
@@ -540,17 +577,17 @@
 		};
 		pinctrl_pwm_a_cif_d7: pwm_d_cif_d7 {
 			fsl,pins = <
-				MX6QDL_PAD_EIM_A22__GPIO2_IO16		PAD_CTRL_IN	/* disable, muxed with PWM<A> */
+				//MX6QDL_PAD_EIM_A22__GPIO2_IO16		PAD_CTRL_IN	/* disable, muxed with PWM<A> */ /* SODIMM 59 */
 			>;
 		};
 		pinctrl_pwm_d_cif_d6: pwm_d_cif_d6 {
 			fsl,pins = <
-				MX6QDL_PAD_EIM_A21__GPIO2_IO17		PAD_CTRL_IN	/* disable, muxed with PWM<D> */
+				//MX6QDL_PAD_EIM_A21__GPIO2_IO17		PAD_CTRL_IN	/* disable, muxed with PWM<D> */ /* SODIMM 67 */
 			>;
 		};
 		pinctrl_regulator_usbh_pwr: gpio_regulator_usbh_pwr {
 			fsl,pins = <
-				MX6QDL_PAD_EIM_D31__GPIO3_IO31		PAD_CTRL_PU_22k	/* USBH_EN */
+				MX6QDL_PAD_EIM_D31__GPIO3_IO31		PAD_CTRL_PU_22k	/* USBH_EN */ /* SODIMM 129 */
 			>;
 		};
 #if 0 //TODO
@@ -573,19 +610,19 @@
 		pinctrl_usbh_oc_1: usbh_oc-1 {
 			fsl,pins = <
 				/* USBH_OC */
-				MX6QDL_PAD_EIM_D30__GPIO3_IO30		PAD_CTRL_HYS_PU
+				//MX6QDL_PAD_EIM_D30__GPIO3_IO30		PAD_CTRL_HYS_PU /* SODIMM 131 */
 			>;
 		};
 		pinctrl_usbc_id_1: usbc_id-1 {
 			fsl,pins = <
 				/* USBC_ID */
-				MX6QDL_PAD_NANDF_D2__GPIO2_IO02		PAD_CTRL_HYS_PU
+				//MX6QDL_PAD_NANDF_D2__GPIO2_IO02		PAD_CTRL_HYS_PU /* SODIMM 135 */
 			>;
 		};
 		pinctrl_usbc_det_1: usbc_det-1 {
 			fsl,pins = <
 				/* USBC_DET */
-				MX6QDL_PAD_GPIO_17__GPIO7_IO12		PAD_CTRL_HYS_PU
+				//MX6QDL_PAD_GPIO_17__GPIO7_IO12		PAD_CTRL_HYS_PU /* SODIMM 137 */
 				/* USBC_DET_EN */
 				MX6QDL_PAD_RGMII_TX_CTL__GPIO6_IO26	PAD_CTRL_PU_22k
 				/* USBC_DET_OVERWRITE */
@@ -670,16 +707,16 @@
 				MX6QDL_PAD_EIM_A18__IPU1_CSI1_DATA13    0xb0b1
 				MX6QDL_PAD_EIM_A19__IPU1_CSI1_DATA14    0xb0b1
 				MX6QDL_PAD_EIM_A20__IPU1_CSI1_DATA15    0xb0b1
-				MX6QDL_PAD_EIM_A21__IPU1_CSI1_DATA16    0xb0b1
-				MX6QDL_PAD_EIM_A22__IPU1_CSI1_DATA17    0xb0b1
+				MX6QDL_PAD_EIM_A21__IPU1_CSI1_DATA16    0xb0b1 /* SODIMM 67 */
+				MX6QDL_PAD_EIM_A22__IPU1_CSI1_DATA17    0xb0b1 /* SODIMM 59 */
 				MX6QDL_PAD_EIM_A23__IPU1_CSI1_DATA18    0xb0b1
 				MX6QDL_PAD_EIM_A24__IPU1_CSI1_DATA19    0xb0b1
 				MX6QDL_PAD_EIM_D17__IPU1_CSI1_PIXCLK    0xb0b1
 				MX6QDL_PAD_EIM_EB3__IPU1_CSI1_HSYNC     0xb0b1
 				MX6QDL_PAD_EIM_D29__IPU1_CSI1_VSYNC     0xb0b1
 
-				MX6QDL_PAD_SD4_DAT1__GPIO2_IO09         0x40		/* disabled PWM pins on camera IF */
-				MX6QDL_PAD_GPIO_1__GPIO1_IO01		0x40
+				MX6QDL_PAD_SD4_DAT1__GPIO2_IO09         0x40		/* disabled PWM pins on camera IF */ /* SODIMM 59 */
+				MX6QDL_PAD_GPIO_1__GPIO1_IO01		0x40	/* SODIMM 67 */
 			>;
 		};
 		pinctrl_cam_mclk: camgrp_mclk { /* parallel camera */
@@ -722,7 +759,7 @@
 
 		pinctrl_spdif_t1: spdifgrp-t1 {
 			fsl,pins = <
-				MX6QDL_PAD_GPIO_17__SPDIF_OUT 0x1b0b0
+				//MX6QDL_PAD_GPIO_17__SPDIF_OUT 0x1b0b0 /* SODIMM 137 */
 			>;
 		};
 	};
@@ -738,7 +775,7 @@
 		};
 		pinctrl_uart1_ctrl: uart1-ctrlgrp { /* Additional DTR, DSR, DCD */
 			fsl,pins = <
-				MX6QDL_PAD_EIM_D23__UART1_DCD_B 0x1b0b0
+				//MX6QDL_PAD_EIM_D23__UART1_DCD_B 0x1b0b0 /* SODIMM 31 */
 				MX6QDL_PAD_EIM_D24__UART1_DTR_B 0x1b0b0
 				MX6QDL_PAD_EIM_D25__UART1_DSR_B 0x1b0b0
 			>;
@@ -767,7 +804,7 @@
 	usdhc {
 		pinctrl_mmc_cd: gpio_mmc_cd {
 			fsl,pins = <
-				MX6QDL_PAD_NANDF_D5__GPIO2_IO05		PAD_CTRL_HYS_PU	/* MMC1 CD */
+				//MX6QDL_PAD_NANDF_D5__GPIO2_IO05		PAD_CTRL_HYS_PU	/* MMC1 CD */ /* SODIMM 43 */
 			>;
 		};
 		pinctrl_usdhc1: usdhc1grp {
@@ -785,17 +822,17 @@
 	weim {
 		pinctrl_weim_cs0: weim_cs0grp {
 			fsl,pins = <
-				MX6QDL_PAD_EIM_CS0__EIM_CS0_B   0xb0b1 /* nEXT_CS0 */
+				//MX6QDL_PAD_EIM_CS0__EIM_CS0_B   0xb0b1 /* nEXT_CS0 */ /* SODIMM 105 */
 			>;
 		};
 		pinctrl_weim_cs1: weim_cs1grp {
 			fsl,pins = <
-				MX6QDL_PAD_EIM_CS1__EIM_CS1_B   0xb0b1 /* nEXT_CS1 */
+				//MX6QDL_PAD_EIM_CS1__EIM_CS1_B   0xb0b1 /* nEXT_CS1 */ /* SODIMM 107 */
 			>;
 		};
 		pinctrl_weim_cs2: weim_cs2grp {
 			fsl,pins = <
-				MX6QDL_PAD_SD2_DAT1__EIM_CS2_B  0xb0b1 /* nEXT_CS2 */
+				//MX6QDL_PAD_SD2_DAT1__EIM_CS2_B  0xb0b1 /* nEXT_CS2 */ /* SODIMM 106 */
 			>;
 		};
 		pinctrl_weim_sram_1: weim_sramgrp-1 {
@@ -840,13 +877,13 @@
 		};
 		pinctrl_weim_rdnwr_1: weim_rdnwr-1 {
 			fsl,pins = <
-				MX6QDL_PAD_SD2_CLK__GPIO1_IO10   PAD_CTRL_IN
+				//MX6QDL_PAD_SD2_CLK__GPIO1_IO10   PAD_CTRL_IN /* SODIMM 93 */
 				MX6QDL_PAD_RGMII_TD3__GPIO6_IO23 PAD_CTRL_HYS_PD
 			>;
 		};
 		pinctrl_weim_npwe_1: weim_npwe-1 {
 			fsl,pins = <
-				MX6QDL_PAD_SD2_DAT3__GPIO1_IO12  PAD_CTRL_IN
+				//MX6QDL_PAD_SD2_DAT3__GPIO1_IO12  PAD_CTRL_IN /* SODIMM 99 */
 				MX6QDL_PAD_RGMII_TD2__GPIO6_IO22 PAD_CTRL_HYS_PD
 			>;
 		};
@@ -875,11 +912,11 @@
 			fsl,pins = <
 				MX6QDL_PAD_EIM_LBA__GPIO2_IO27     PAD_CTRL_HYS_PU
 				MX6QDL_PAD_EIM_BCLK__GPIO6_IO31    PAD_CTRL_HYS_PU
-				MX6QDL_PAD_NANDF_CS3__GPIO6_IO16   PAD_CTRL_HYS_PU
+				//MX6QDL_PAD_NANDF_CS3__GPIO6_IO16   PAD_CTRL_HYS_PU /* SODIMM 154 */
 				MX6QDL_PAD_NANDF_CS1__GPIO6_IO14   PAD_CTRL_HYS_PU
 				MX6QDL_PAD_NANDF_RB0__GPIO6_IO10   PAD_CTRL_HYS_PU
 				MX6QDL_PAD_NANDF_ALE__GPIO6_IO08   PAD_CTRL_HYS_PU
-				MX6QDL_PAD_NANDF_WP_B__GPIO6_IO09  PAD_CTRL_HYS_PU
+				//MX6QDL_PAD_NANDF_WP_B__GPIO6_IO09  PAD_CTRL_HYS_PU /* SODIMM 162 */
 				MX6QDL_PAD_NANDF_CS0__GPIO6_IO11   PAD_CTRL_HYS_PU
 				MX6QDL_PAD_NANDF_CLE__GPIO6_IO07   PAD_CTRL_HYS_PU
 				MX6QDL_PAD_GPIO_19__GPIO4_IO05     PAD_CTRL_HYS_PU
@@ -995,11 +1032,11 @@
 &usdhc1 {
 	label = "MMC1";
 	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_usdhc1 &pinctrl_mmc_cd>;
-	cd-gpios = <&gpio2 5 GPIO_ACTIVE_LOW>;
+	//pinctrl-0 = <&pinctrl_usdhc1 &pinctrl_mmc_cd>; /* removed since cd pin is being used as gpio */
+	pinctrl-0 = <&pinctrl_usdhc1>;
+	//cd-gpios = <&gpio2 5 GPIO_ACTIVE_LOW>; /* removed since this pin is being used as gpio */
+	broken-cd;
 	disable-wp;
-	enable-sdio-wakeup;
-	keep-power-in-suspend;
 	vmmc-supply = <&reg_3p3v>;
 	bus-width = <4>;
 	no-1-8-v;
