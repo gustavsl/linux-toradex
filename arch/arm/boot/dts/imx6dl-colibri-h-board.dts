@@ -48,7 +48,7 @@
 		id-gpio = <&gpio7 12 GPIO_ACTIVE_HIGH>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&pinctrl_usbc_det_1>;
-		status = "disabled"; /* disabled since the id pin is being used as gpio */
+		status = "okay"; /* disabled since the id pin is being used as gpio */
 	};
 
 	leds {
