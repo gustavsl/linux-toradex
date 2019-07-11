@@ -62,6 +62,18 @@ static struct fb_videomode lcdif_modedb[] = {
 	 .flag = 0,},
 	{
 	/* 800x480 @ 60 Hz , pixel clk @ 33.26MHz */
+	"NVD7", 60, 800, 480, 33333,
+	 .left_margin = 12,
+	 .right_margin = 60,
+	 .hsync_len = 20,
+	 .upper_margin = 0,
+	 .lower_margin = 60,
+	 .vsync_len = 5,
+	 .sync = FB_SYNC_CLK_LAT_FALL,
+	 .vmode = FB_VMODE_NONINTERLACED,
+	 .flag = 0,},
+	{
+	/* 800x480 @ 60 Hz , pixel clk @ 33.26MHz */
 	"EDT-WVGA", 60, 800, 480, 30066,
 	 .left_margin = 88,
 	 .right_margin = 40,

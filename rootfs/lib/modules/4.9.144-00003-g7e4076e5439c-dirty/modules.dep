@@ -1,0 +1,79 @@
+kernel/fs/fat/msdos.ko:
+kernel/fs/nfs/flexfilelayout/nfs_layout_flexfiles.ko:
+kernel/fs/nls/nls_iso8859-15.ko:
+kernel/fs/binfmt_misc.ko:
+kernel/fs/configfs/configfs.ko:
+kernel/fs/squashfs/squashfs.ko:
+kernel/fs/isofs/isofs.ko:
+kernel/fs/udf/udf.ko: kernel/lib/crc-itu-t.ko
+kernel/crypto/echainiv.ko:
+kernel/drivers/net/ppp/ppp_generic.ko: kernel/drivers/net/slip/slhc.ko
+kernel/drivers/net/slip/slhc.ko:
+kernel/drivers/usb/serial/option.ko: kernel/drivers/usb/serial/usb_wwan.ko
+kernel/drivers/usb/serial/usb_wwan.ko:
+kernel/drivers/usb/gadget/function/usb_f_acm.ko: kernel/drivers/usb/gadget/libcomposite.ko kernel/fs/configfs/configfs.ko kernel/drivers/usb/gadget/function/u_serial.ko
+kernel/drivers/usb/gadget/function/usb_f_ss_lb.ko: kernel/drivers/usb/gadget/libcomposite.ko kernel/fs/configfs/configfs.ko
+kernel/drivers/usb/gadget/function/u_serial.ko:
+kernel/drivers/usb/gadget/function/usb_f_serial.ko: kernel/drivers/usb/gadget/libcomposite.ko kernel/fs/configfs/configfs.ko kernel/drivers/usb/gadget/function/u_serial.ko
+kernel/drivers/usb/gadget/function/usb_f_obex.ko: kernel/drivers/usb/gadget/libcomposite.ko kernel/fs/configfs/configfs.ko kernel/drivers/usb/gadget/function/u_serial.ko
+kernel/drivers/usb/gadget/function/u_ether.ko:
+kernel/drivers/usb/gadget/function/usb_f_ncm.ko: kernel/drivers/usb/gadget/function/u_ether.ko kernel/drivers/usb/gadget/libcomposite.ko kernel/fs/configfs/configfs.ko
+kernel/drivers/usb/gadget/function/usb_f_ecm.ko: kernel/drivers/usb/gadget/function/u_ether.ko kernel/drivers/usb/gadget/libcomposite.ko kernel/fs/configfs/configfs.ko
+kernel/drivers/usb/gadget/function/usb_f_eem.ko: kernel/drivers/usb/gadget/function/u_ether.ko kernel/drivers/usb/gadget/libcomposite.ko kernel/fs/configfs/configfs.ko
+kernel/drivers/usb/gadget/function/usb_f_ecm_subset.ko: kernel/drivers/usb/gadget/function/u_ether.ko kernel/drivers/usb/gadget/libcomposite.ko kernel/fs/configfs/configfs.ko
+kernel/drivers/usb/gadget/function/usb_f_rndis.ko: kernel/drivers/usb/gadget/function/u_ether.ko kernel/drivers/usb/gadget/libcomposite.ko kernel/fs/configfs/configfs.ko
+kernel/drivers/usb/gadget/function/usb_f_mass_storage.ko: kernel/drivers/usb/gadget/libcomposite.ko kernel/fs/configfs/configfs.ko
+kernel/drivers/usb/gadget/function/usb_f_fs.ko: kernel/drivers/usb/gadget/libcomposite.ko kernel/fs/configfs/configfs.ko
+kernel/drivers/usb/gadget/legacy/g_zero.ko: kernel/drivers/usb/gadget/libcomposite.ko kernel/fs/configfs/configfs.ko
+kernel/drivers/usb/gadget/legacy/g_ether.ko: kernel/drivers/usb/gadget/function/usb_f_rndis.ko kernel/drivers/usb/gadget/function/u_ether.ko kernel/drivers/usb/gadget/libcomposite.ko kernel/fs/configfs/configfs.ko
+kernel/drivers/usb/gadget/legacy/gadgetfs.ko:
+kernel/drivers/usb/gadget/legacy/g_mass_storage.ko: kernel/drivers/usb/gadget/function/usb_f_mass_storage.ko kernel/drivers/usb/gadget/libcomposite.ko kernel/fs/configfs/configfs.ko
+kernel/drivers/usb/gadget/legacy/g_serial.ko: kernel/drivers/usb/gadget/libcomposite.ko kernel/fs/configfs/configfs.ko
+kernel/drivers/usb/gadget/legacy/g_ncm.ko: kernel/drivers/usb/gadget/function/u_ether.ko kernel/drivers/usb/gadget/libcomposite.ko kernel/fs/configfs/configfs.ko
+kernel/drivers/usb/gadget/libcomposite.ko: kernel/fs/configfs/configfs.ko
+kernel/drivers/usb/class/cdc-acm.ko:
+kernel/drivers/usb/class/cdc-wdm.ko:
+kernel/drivers/input/serio/serport.ko:
+kernel/drivers/input/touchscreen/atmel_mxt_ts.ko:
+kernel/drivers/input/touchscreen/fusion_F0710A.ko:
+kernel/drivers/i2c/algos/i2c-algo-pcf.ko:
+kernel/drivers/i2c/algos/i2c-algo-pca.ko:
+kernel/drivers/media/v4l2-core/videobuf2-memops.ko:
+kernel/drivers/media/v4l2-core/videobuf2-vmalloc.ko: kernel/drivers/media/v4l2-core/videobuf2-memops.ko
+kernel/drivers/media/v4l2-core/videobuf2-dma-contig.ko: kernel/drivers/media/v4l2-core/videobuf2-memops.ko
+kernel/drivers/media/platform/mxc/capture/mxc_v4l2_capture.ko: kernel/drivers/media/platform/mxc/capture/ipu_bg_overlay_sdc.ko kernel/drivers/media/platform/mxc/capture/ipu_still.ko kernel/drivers/media/platform/mxc/capture/ipu_prp_enc.ko kernel/drivers/media/platform/mxc/capture/ipu_csi_enc.ko kernel/drivers/media/platform/mxc/capture/ipu_fg_overlay_sdc.ko kernel/drivers/media/platform/mxc/capture/v4l2-int-device.ko
+kernel/drivers/media/platform/mxc/capture/ipu_fg_overlay_sdc.ko:
+kernel/drivers/media/platform/mxc/capture/ipu_bg_overlay_sdc.ko:
+kernel/drivers/media/platform/mxc/capture/ipu_prp_enc.ko:
+kernel/drivers/media/platform/mxc/capture/ipu_still.ko:
+kernel/drivers/media/platform/mxc/capture/ipu_csi_enc.ko:
+kernel/drivers/media/platform/mxc/capture/mx6s_capture.ko: kernel/drivers/media/v4l2-core/videobuf2-dma-contig.ko kernel/drivers/media/v4l2-core/videobuf2-memops.ko
+kernel/drivers/media/platform/mxc/capture/mxc_vadc.ko:
+kernel/drivers/media/platform/mxc/capture/ov5640_camera_int.ko: kernel/drivers/media/platform/mxc/capture/v4l2-int-device.ko
+kernel/drivers/media/platform/mxc/capture/ov5642_camera.ko: kernel/drivers/media/platform/mxc/capture/mxc_v4l2_capture.ko kernel/drivers/media/platform/mxc/capture/ipu_bg_overlay_sdc.ko kernel/drivers/media/platform/mxc/capture/ipu_still.ko kernel/drivers/media/platform/mxc/capture/ipu_prp_enc.ko kernel/drivers/media/platform/mxc/capture/ipu_csi_enc.ko kernel/drivers/media/platform/mxc/capture/ipu_fg_overlay_sdc.ko kernel/drivers/media/platform/mxc/capture/v4l2-int-device.ko
+kernel/drivers/media/platform/mxc/capture/ov5640_camera_mipi_int.ko: kernel/drivers/media/platform/mxc/capture/mxc_v4l2_capture.ko kernel/drivers/media/platform/mxc/capture/ipu_bg_overlay_sdc.ko kernel/drivers/media/platform/mxc/capture/ipu_still.ko kernel/drivers/media/platform/mxc/capture/ipu_prp_enc.ko kernel/drivers/media/platform/mxc/capture/ipu_csi_enc.ko kernel/drivers/media/platform/mxc/capture/ipu_fg_overlay_sdc.ko kernel/drivers/media/platform/mxc/capture/v4l2-int-device.ko
+kernel/drivers/media/platform/mxc/capture/adv7180_tvin.ko: kernel/drivers/media/platform/mxc/capture/v4l2-int-device.ko
+kernel/drivers/media/platform/mxc/capture/adv7280_tvin.ko: kernel/drivers/media/platform/mxc/capture/v4l2-int-device.ko
+kernel/drivers/media/platform/mxc/capture/max9526_tvin.ko: kernel/drivers/media/platform/mxc/capture/v4l2-int-device.ko
+kernel/drivers/media/platform/mxc/capture/v4l2-int-device.ko:
+kernel/drivers/media/usb/uvc/uvcvideo.ko: kernel/drivers/media/v4l2-core/videobuf2-vmalloc.ko kernel/drivers/media/v4l2-core/videobuf2-memops.ko
+kernel/drivers/media/usb/gspca/gspca_main.ko:
+kernel/drivers/crypto/caam/sm_test.ko:
+kernel/drivers/hid/hid-multitouch.ko:
+kernel/drivers/bluetooth/hci_uart.ko: kernel/net/bluetooth/bluetooth.ko
+kernel/sound/core/snd-hwdep.ko:
+kernel/sound/core/snd-rawmidi.ko:
+kernel/sound/usb/snd-usb-audio.ko: kernel/sound/core/snd-hwdep.ko kernel/sound/usb/snd-usbmidi-lib.ko kernel/sound/core/snd-rawmidi.ko
+kernel/sound/usb/snd-usbmidi-lib.ko: kernel/sound/core/snd-rawmidi.ko
+kernel/net/ipv4/ip_tunnel.ko:
+kernel/net/ipv4/tunnel4.ko:
+kernel/net/ipv6/sit.ko: kernel/net/ipv4/tunnel4.ko kernel/net/ipv4/ip_tunnel.ko
+kernel/net/wireless/cfg80211.ko:
+kernel/net/bluetooth/bluetooth.ko:
+kernel/net/bluetooth/rfcomm/rfcomm.ko: kernel/net/bluetooth/bluetooth.ko
+kernel/net/bluetooth/bnep/bnep.ko: kernel/net/bluetooth/bluetooth.ko
+kernel/net/bluetooth/hidp/hidp.ko: kernel/net/bluetooth/bluetooth.ko
+kernel/net/mac80211/mac80211.ko: kernel/net/wireless/cfg80211.ko
+kernel/lib/crc-itu-t.ko:
+kernel/lib/crc7.ko:
+kernel/lib/libcrc32c.ko:
